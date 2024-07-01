@@ -1,7 +1,7 @@
 package com.myself.u_actions.models;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "transactions")
 public class Transaction {
+  @Id
+  @GeneratedValue
   private Long id;
-  private Long user_id;
-  private Long stock_id;
-  private LocalDateTime creationDate = LocalDateTime.now();
+  private LocalDate creationDate = LocalDate.now();
   private double stockQuantity;
   private double price;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "order_id")
+  private Order order;
 }

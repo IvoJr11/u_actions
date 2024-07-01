@@ -1,8 +1,9 @@
 package com.myself.u_actions.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "companies")
 public class Company {
   @Id
   @GeneratedValue
@@ -20,4 +22,6 @@ public class Company {
   private String identifier;
   private String sector;
   private double valuation;
+  @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+  private Set<Stock> stocks = new HashSet<>();
 }
