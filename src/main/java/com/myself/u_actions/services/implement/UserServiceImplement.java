@@ -1,6 +1,7 @@
 package com.myself.u_actions.services.implement;
 
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,17 @@ public class UserServiceImplement implements UserService{
 
   @Autowired
   UserRepository userRepository;
-  
+
+  @Override
+  public List<User> getAllUsers() {
+      return userRepository.findAll();
+  }
+
+  @Override
+  public void saveUser(User user) {
+    userRepository.save(user);
+  }
+
   @Override
   public User getUserByEmail(String email) {
     User user = userRepository.findByEmail(email)
