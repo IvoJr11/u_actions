@@ -20,7 +20,7 @@ public class AuthController {
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public Object login(@RequestParam String email, @RequestParam String password) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email,password)

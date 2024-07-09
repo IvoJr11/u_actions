@@ -2,7 +2,6 @@ package com.myself.u_actions.services.implement;
 
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +28,15 @@ public class UserServiceImplement implements UserService{
 
   @Override
   public User getUserByEmail(String email) {
+    return userRepository.findByEmail(email)
+      .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+  }
+
+  @Override
+  public void deleteUser(String email) {
     User user = userRepository.findByEmail(email)
-      .orElseThrow(() -> new NoSuchElementException("User not found with email: " + email));
-    return user;  
+            .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+    userRepository.delete(user);
   }
 
 }
