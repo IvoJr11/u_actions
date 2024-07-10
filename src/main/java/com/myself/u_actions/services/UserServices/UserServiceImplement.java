@@ -1,4 +1,4 @@
-package com.myself.u_actions.services.implement;
+package com.myself.u_actions.services.UserServices;
 
 
 import java.util.List;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.myself.u_actions.models.User;
 import com.myself.u_actions.repositories.UserRepository;
-import com.myself.u_actions.services.UserService;
 
 @Service
 public class UserServiceImplement implements UserService{

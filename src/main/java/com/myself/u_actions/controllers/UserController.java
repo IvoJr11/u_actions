@@ -1,11 +1,11 @@
 package com.myself.u_actions.controllers;
 
 import com.myself.u_actions.models.Role;
-import com.myself.u_actions.services.implement.UserNotFoundException;
+import com.myself.u_actions.services.UserServices.UserNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import com.myself.u_actions.models.User;
-import com.myself.u_actions.services.UserService;
+import com.myself.u_actions.services.UserServices.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

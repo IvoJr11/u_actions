@@ -1,4 +1,4 @@
-package com.myself.u_actions.services;
+package com.myself.u_actions.services.UserServices;
 
 import com.myself.u_actions.models.User;
 
