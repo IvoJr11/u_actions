@@ -22,4 +22,11 @@ public class CompanyServiceImplement implements CompanyService{
         return companyRepository.findByName(name)
                 .orElseThrow(() -> new CompanyNotFoundException("Company not found with name: " + name));
     }
+
+    @Override
+    public void createCompany(String name, String location, String identifier, String sector, double valuation) {
+        Company newCompany = new Company(name, location, identifier, sector, valuation);
+        companyRepository.save(newCompany);
+    }
+
 }
