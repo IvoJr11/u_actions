@@ -29,4 +29,10 @@ public class CompanyServiceImplement implements CompanyService{
         companyRepository.save(newCompany);
     }
 
+    @Override
+    public void deleteCompanyByName(String name) {
+        Company company = companyRepository.findByName(name)
+                .orElseThrow(() -> new CompanyNotFoundException("Company not found with name: " + name));
+        companyRepository.delete(company);
+    }
 }

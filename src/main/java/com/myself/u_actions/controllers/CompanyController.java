@@ -51,4 +51,13 @@ public class CompanyController {
         companyService.createCompany(name, location, identifier, sector, valuation);
         return new ResponseEntity<>("Company created successfully", HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/delete/{name}")
+    ResponseEntity<Object> deleteCompany(@PathVariable String name) {
+        if(name.isEmpty()) {
+            return new ResponseEntity<>("Name cannot be empty", HttpStatus.BAD_REQUEST);
+        }
+        companyService.deleteCompanyByName(name);
+        return new ResponseEntity<>("Company deleted successfully", HttpStatus.OK);
+    }
 }

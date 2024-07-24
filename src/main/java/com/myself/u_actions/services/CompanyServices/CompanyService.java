@@ -8,4 +8,5 @@ public interface CompanyService {
     List<Company> getAllCompanies();
     Company getCompanyByName(String name);
     void createCompany(String name, String location, String identifier, String sector, double valuation);
+    void deleteCompanyByName(String name);
 }

@@ -2,6 +2,7 @@ package com.myself.u_actions.controllers;
 
 import com.myself.u_actions.models.Role;
 import com.myself.u_actions.services.UserServices.UserNotFoundException;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.myself.u_actions.models.User;
@@ -29,13 +30,22 @@ public class UserController {
   }
 
   @GetMapping("/{email}")
-  public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+  public ResponseEntity<Object> getUserByEmail(@PathVariable String email) {
+    if(email.isEmpty()) {
+      return new ResponseEntity<>("Name cannot be empty", HttpStatus.BAD_REQUEST);
+    }
     try {
       User user = userService.getUserByEmail(email);
       return new ResponseEntity<>(user, HttpStatus.FOUND);
     } catch (UserNotFoundException e) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+  }
+
+  @GetMapping("/current")
+  public ResponseEntity<User> getCurrentUser(Authentication authentication) {
+    User user = userService.getUserByEmail(authentication.getName());
+    return ResponseEntity.ok(user);
   }
 
   @PostMapping("/register")
@@ -75,6 +85,9 @@ public class UserController {
 
   @DeleteMapping("/delete/{email}")
   public ResponseEntity<Object> deleteUser(@PathVariable String email) {
+    if(email.isEmpty()) {
+      return new ResponseEntity<>("Email cannot be empty", HttpStatus.BAD_REQUEST);
+    }
     try {
       userService.getUserByEmail(email);
       userService.deleteUser(email);
