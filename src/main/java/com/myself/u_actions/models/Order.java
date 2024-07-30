@@ -35,4 +35,13 @@ public class Order {
   private Set<Transaction> transactions = new HashSet<>();
   @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
   private Set<OrderStock> orderStocks = new HashSet<>();
+
+  public Order(double quantity, double price, State state, User user, Set<Transaction> transactions, Set<OrderStock> orderStocks) {
+    this.quantity = quantity;
+    this.price = price;
+    this.state = state;
+    this.user = user;
+    this.transactions = transactions;
+    this.orderStocks = orderStocks;
+  }
 }
