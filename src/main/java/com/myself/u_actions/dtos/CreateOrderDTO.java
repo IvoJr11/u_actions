@@ -1,6 +1,10 @@
-package com.myself.u_actions.models;
+package com.myself.u_actions.dtos;
 
 import java.util.Set;
+
+import com.myself.u_actions.models.OrderStock;
+import com.myself.u_actions.models.State;
+import com.myself.u_actions.models.Transaction;
 
 public class CreateOrderDTO {
   private double quantity;

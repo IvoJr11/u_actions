@@ -21,4 +21,10 @@ public class Transaction {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "order_id")
   private Order order;
+
+  public Transaction(double stockQuantity, double price, Order order) {
+    this.stockQuantity = stockQuantity;
+    this.price = price;
+    this.order = order;
+  }
 }

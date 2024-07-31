@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import com.myself.u_actions.models.CreateOrderDTO;
+import com.myself.u_actions.dtos.CreateOrderDTO;
 import com.myself.u_actions.models.Order;
 import com.myself.u_actions.models.User;
 import com.myself.u_actions.services.OrderServices.OrderService;
